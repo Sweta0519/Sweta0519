@@ -37,10 +37,11 @@ describe('Broken Sauce', function () {
              done();
         });
 
-        let search = await driver.findElement(By.name("q"),8000);
+        let search = await driver.findElement(By.name("q"),8000); // Note: sometime it is finding the element and sometime its not able to find and shows "ElementNotInteractableError: element not interactable"
+
         driver.manage().window().maximize();
         await search.sendKeys("Sauce Labs");
-        
+
         let button = await driver.findElement(By.name("btnK"),8000)
         await button.click()
 
