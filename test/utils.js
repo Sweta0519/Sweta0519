@@ -13,7 +13,7 @@ const workingCapabilities = {
     'browserVersion': 'latest',
     'sauce:options': {
          'name': 'Guinea-Pig Sauce',
-         'tags': ["task1","task2","task3"]
+         'tags': ["task1","task2","task3"] // Task IV for adding tag for the tests
     }
 };
 

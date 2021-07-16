@@ -31,8 +31,8 @@ describe('Broken Sauce', function () {
         // You can investigate the modal elements using a Live Test(https://app.saucelabs.com/live/web-testing)
 
 
-        // Maximized the window and found the element from GDPR modal window in order to proceed
-        driver.manage().window().maximize();
+        driver.manage().window().maximize(); // Maximized the window and found the element from GDPR modal window in order to proceed
+
         driver.wait(until.elementLocated(By.id("L2AGLb")),8000).click().then( function() {
              done();
         });
@@ -52,14 +52,16 @@ describe('Broken Sauce', function () {
 
           await  page.click();
 
-          const actions = driver.actions();
-          await assert.strictEqual("Cross Browser Testing, Selenium Testing, Mobile Testing | Sauce Labs", await driver.getTitle(),3000);
+          const actions = driver.actions(); // initialized actions for performing Hover over
+          await assert.strictEqual("Cross Browser Testing, Selenium Testing, Mobile Testing | Sauce Labs", await driver.getTitle(),3000); // to check if the website opened or not
 
-          const element = driver.wait(until.elementLocated({css:'#headerMainNav > div > nav > ul > li.nav-menu-list-container > ul:nth-child(2) > li:nth-child(4) > div.nav-menu > div > a'}),8000);
-          await actions.move({origin: element}).perform();
+          const element = driver.wait(until.elementLocated({css:'#headerMainNav > div > nav > ul > li.nav-menu-list-container > ul:nth-child(2) > li:nth-child(4) > div.nav-menu > div > a'}),8000); // until.elementLocated used to check element visibility
+          await actions.move({origin: element}).perform(); // move function is called for moving the cursor to the found element
+
           const document = driver.wait(until.elementLocated({css:'#headerMainNav > div > nav > ul > li.nav-menu-list-container > ul:nth-child(2) > li:nth-child(4) > div.nav-menu-link-group-row-list-wrapper > div > div > div > ul > li:nth-child(2) > div > ul > li > div > ul > li:nth-child(1) > div > ul > li > ul > li:nth-child(1) > a'}),8000);
           await actions.move({origin: document}).perform();
-          document.click();
+
+          document.click(); // To click Documentation link and open saucelab wiki page
 
           await driver.quit();
     });
